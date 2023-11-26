@@ -5,7 +5,8 @@ import { ErrMessage, StyledForm, Input } from './ContactForm.styles';
 import { ButtonClose } from '../ContactCard/ContactCard.styles';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, selectContacts } from 'redux/contactsSlice';
+import { operationAddContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
@@ -41,7 +42,7 @@ const ContactForm = () => {
     const finalContact = {
       ...newContact,
     };
-    dispatch(addContact(finalContact));
+    dispatch(operationAddContact(finalContact));
   };
 
   return (

@@ -1,17 +1,17 @@
 import React from 'react';
-import { CardWrapper, ButtonClose, InfoWrapper, Info } from './ContactCard.styles';
+import { CardWrapper, ButtonClose, InfoWrapper, Name, Phone } from './ContactCard.styles';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { operationDeleteContact } from 'redux/operations';
 
 const ContactCard = ({ contact: { name, number, id } }) => {
   const dispatch = useDispatch();
   return (
     <CardWrapper>
     <InfoWrapper>
-      <Info>{name}</Info>
-      <Info>{number}</Info>
+      <Name>{name}</Name>
+      <Phone>{number}</Phone>
     </InfoWrapper>
-      <ButtonClose onClick={() => dispatch(deleteContact(id))}>Delete</ButtonClose>
+      <ButtonClose onClick={() => dispatch(operationDeleteContact(id))}>Delete</ButtonClose>
     </CardWrapper>
   );
 };
